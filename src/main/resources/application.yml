@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ach-payroll-app
+  data:
+    mongodb:
+      database: nachadb
+        
+application:
+  fileWatcher:
+    daemon: true
+    pollInterval: 5
+    quietPeriod: 2
+    directory: c:\\workspace\\ach
+    

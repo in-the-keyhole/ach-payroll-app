@@ -1,0 +1,15 @@
+services:
+  nacha-processor-db:
+    image: mongo:7.0
+    container_name: nacha-processor-db
+    environment:
+      - MONGO_INITDB_DATABASE=nachadb
+      - MONGO_REPLICA_SET_NAME=rs0
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
+      - ./mongod.conf:/etc/mongod.conf
+      # - ./replica-init.js:/docker-entrypoint-initdb.d/replica-init.js:ro
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+    command: ["--bind_ip_all", "--replSet", "rs0"]
